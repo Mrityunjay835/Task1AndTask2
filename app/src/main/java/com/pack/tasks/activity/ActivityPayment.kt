@@ -23,11 +23,11 @@ class ActivityPayment : AppCompatActivity(), PaymentResultWithDataListener {
         co.setKeyID("rzp_test_1MCpTu6to2VXWF")
 
         binding.btnPayment.setOnClickListener{
-            startPayment()
+            startPayment(intent.getStringExtra("amount")?:"50000")
         }
     }
 
-    private fun startPayment() {
+    private fun startPayment(amount:String) {
         /*
         *  You need to pass the current activity to let Razorpay create CheckoutActivity
         * */
@@ -42,7 +42,7 @@ class ActivityPayment : AppCompatActivity(), PaymentResultWithDataListener {
             options.put("image","https://s3.amazonaws.com/rzp-mobile/images/rzp.jpg")
             options.put("theme.color", "#3399cc");
             options.put("currency","INR");
-            options.put("amount","50000")//pass amount in currency subunits
+            options.put("amount",amount)//pass amount in currency subunits
 
             val retryObj =JSONObject();
             retryObj.put("enabled", true);

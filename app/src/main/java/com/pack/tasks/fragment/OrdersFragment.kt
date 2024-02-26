@@ -29,7 +29,9 @@ class OrdersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnGoToPayment.setOnClickListener{
-            startActivity(Intent(requireContext(),ActivityPayment::class.java))
+            var intent =Intent(requireContext(),ActivityPayment::class.java)
+            intent.putExtra("amount","${binding.etAmount.text.toString()}00")
+            startActivity(intent)
         }
     }
     companion object {
